@@ -1,0 +1,6 @@
+services:
+  eth-proxy:
+    build: .
+    container_name: eth-proxy
+    ports:
+      - "8081:8081"

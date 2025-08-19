@@ -1,0 +1,14 @@
+http:
+  port: 8081
+  keepAlive: true
+  pool: 200
+  timeouts:
+    requestMs: 15000
+    connectMs: 5000
+
+tls:
+  certPath: cert.pem
+  keyPath: key.pem
+
+eth:
+  url: https://ethereum.publicnode.com

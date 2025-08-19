@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.demo'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    vertx = '5.0.3'
+    jackson = '2.19.2'
+}
+
+dependencies {
+    // vert.x
+    implementation "io.vertx:vertx-core:$vertx"
+    implementation "io.vertx:vertx-web:$vertx"
+    implementation "io.vertx:vertx-web-client:$vertx"
+    implementation "io.vertx:vertx-config:$vertx"
+    implementation "io.vertx:vertx-config-yaml:$vertx"
+
+    // json lib
+    implementation "com.fasterxml.jackson.core:jackson-databind:$jackson"
+    implementation "com.fasterxml.jackson.core:jackson-core:$jackson"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:$jackson"
+
+    // logger
+    implementation "org.slf4j:slf4j-simple:2.0.16"
+
+    // tests
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClass = 'com.demo.Application'
+}
+
+tasks.register('bootRun', JavaExec) {
+    group = 'application'
+    description = 'Run the Vert.x application'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('com.demo.Application')
+    jvmArgs '-DenvName=local'
+}
