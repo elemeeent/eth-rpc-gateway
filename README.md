@@ -3,8 +3,9 @@
 - docker
 - openssl (to create cert)
 
+# Certificate
 
-# openssl
+## openssl
 1. create key.pem
 ```
 openssl genrsa -out key.pem 2048 
@@ -14,6 +15,9 @@ openssl genrsa -out key.pem 2048
 openssl req -new -x509 -key key.pem -out cert.pem -days 365 -subj "/CN=localhost"
 ```
 3. move them to the `/src/main/recources`
+
+## Existing certificates
+Attach certs from the archive you received.
 
 # run
 ## via IntellijIdea
